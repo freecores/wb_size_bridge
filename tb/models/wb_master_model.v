@@ -35,18 +35,6 @@
 ////                                                               ////
 ///////////////////////////////////////////////////////////////////////
 
-//  CVS Log
-//
-//  $Id: wb_master_model.v,v 1.1 2009/02/19 23:51:32 kenagy Exp $
-//
-//  $Date: 2009/02/19 23:51:32 $
-//  $Revision: 1.1 $
-//  $Author: kenagy $
-//  $Locker:  $
-//  $State: Exp $
-//
-// Change History:
-//
 
 `timescale 1ns/10ps
 
