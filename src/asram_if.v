@@ -1,29 +1,6 @@
-//////////////////////////////////////////////////////////////////////
-////                                                              ////
-//// Copyright (C) 2009 Authors and OPENCORES.ORG                 ////
-////                                                              ////
-//// This source file may be used and distributed without         ////
-//// restriction provided that this copyright statement is not    ////
-//// removed from the file and that any derivative work contains  ////
-//// the original copyright notice and the associated disclaimer. ////
-////                                                              ////
-//// This source file is free software; you can redistribute it   ////
-//// and/or modify it under the terms of the GNU Lesser General   ////
-//// Public License as published by the Free Software Foundation; ////
-//// either version 2.1 of the License, or (at your option) any   ////
-//// later version.                                               ////
-////                                                              ////
-//// This source is distributed in the hope that it will be       ////
-//// useful, but WITHOUT ANY WARRANTY; without even the implied   ////
-//// warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR      ////
-//// PURPOSE.  See the GNU Lesser General Public License for more ////
-//// details.                                                     ////
-////                                                              ////
-//// You should have received a copy of the GNU Lesser General    ////
-//// Public License along with this source; if not, download it   ////
-//// from http://www.opencores.org/lgpl.shtml                     ////
-////                                                              ////
-//////////////////////////////////////////////////////////////////////
+//
+//
+//
 
 module asram_if(
                   inout   [15:0]  sram_dq,    //  SRAM Data bus 16 Bits
@@ -96,6 +73,7 @@ module asram_if(
   assign sram_ub_n  = ~wb_lo_sel_o[1];
   assign sram_lb_n  = ~wb_lo_sel_o[0];
   assign sram_we_n  = ~wb_lo_we_o;
+//   assign sram_ce_n  = ~(wb_lo_stb_o & wb_lo_cyc_o);
   assign sram_ce_n  = 1'b0;
   assign sram_oe_n  = wb_lo_we_o;
                 
