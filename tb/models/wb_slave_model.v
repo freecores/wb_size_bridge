@@ -95,11 +95,26 @@ module wb_slave_model(  clk_i, rst_i, dat_o, dat_i, adr_i,
                 
       32:       begin
                   initial 
-                    begin
                       $display( "###- wb_slave_model(): WISHBONE 32 BIT SLAVE MODEL INSTANTIATED " );
-                      $display( "###- wb_slave_model(): Not yet supported " );
-                      $stop();
-                    end
+                    
+                  always @ (posedge clk_i)
+                    if (we_i & cyc_i & stb_i & sel_i[0]) 
+                      ram[{adr_i[AWIDTH-1:2], 2'b00}] <= dat_i[7:0];
+                      
+                  always @ (posedge clk_i)
+                    if (we_i & cyc_i & stb_i & sel_i[1]) 
+                      ram[{adr_i[AWIDTH-1:2], 2'b01}] <= dat_i[15:8];
+                      
+                  always @ (posedge clk_i)
+                    if (we_i & cyc_i & stb_i & sel_i[2]) 
+                      ram[{adr_i[AWIDTH-1:2], 2'b10}] <= dat_i[23:16];
+                      
+                  always @ (posedge clk_i)
+                    if (we_i & cyc_i & stb_i & sel_i[3]) 
+                      ram[{adr_i[AWIDTH-1:2], 2'b11}] <= dat_i[31:24];
+                      
+                  assign dat_o = { ram[{adr_i[AWIDTH-1:2], 2'b11}], ram[{adr_i[AWIDTH-1:2], 2'b10}], ram[{adr_i[AWIDTH-1:2], 2'b01}], ram[{adr_i[AWIDTH-1:2], 2'b00}] };
+                    
                 end
                 
       default:  begin
